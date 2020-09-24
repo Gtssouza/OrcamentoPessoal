@@ -15,5 +15,10 @@ let descricao= document.getElementById('descricao').value
 let valor= document.getElementById('valor').value
 
 let despesa = new Despesa(ano, mes, dia, descricao, valor)
-console.log(despesa)
+
+gravar(despesa)
+}
+
+function gravar(d){
+    localStorage.setItem('despesa', JSON.stringify(d))
 }

@@ -54,9 +54,14 @@ class Bd {
 			if(despesa === null){
 				continue
 			}
+			despesa.id = i
 			despesas.push(despesa)
 		}
 		return despesas
+	}
+
+	remover(id){
+		localStorage.removeItem(id)
 	}
 
 	pesquisar(despesa){
@@ -185,6 +190,10 @@ function carregaListaDespesas(despesas = Array(), filtro = false){
 		let btn = document.createElement("button")
 		btn.className = 'btn btn-danger'
 		btn.innerHTML = '<i class = "fas fa-times"></i>'
+		btn.id = 'id_despesa' + d.id
+		btn.onclick = function(){
+			bd.remover(this.id)
+		}
 		linha.insertCell(4).append(btn)
 	})
 }
